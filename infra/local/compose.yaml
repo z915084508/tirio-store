@@ -1,0 +1,53 @@
+name: tirio-local
+services:
+  db:
+    image: mariadb:11.4.13
+    restart: "no"
+    environment:
+      MARIADB_DATABASE: tirio
+      MARIADB_USER: tirio
+      MARIADB_PASSWORD: ${DB_PASSWORD:?Generate local .env first}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Generate local .env first}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  wordpress:
+    image: wordpress:7.1.4-php8.3-apache
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${WP_PORT:-8087}:80"
+    environment: &wp_env
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: tirio
+      WORDPRESS_DB_USER: tirio
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:?Generate local .env first}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_ENVIRONMENT_TYPE', 'local');
+        define('DISALLOW_FILE_EDIT', true);
+        define('AUTOMATIC_UPDATER_DISABLED', true);
+    volumes:
+      - wp_data:/var/www/html
+      - ./local-safety.php:/var/www/html/wp-content/mu-plugins/tirio-local-safety.php:ro
+  cli:
+    image: wordpress:cli-2.12.0-php8.3
+    profiles: [tools]
+    user: "33:33"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      <<: *wp_env
+      WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD:?Generate local .env first}
+    volumes:
+      - wp_data:/var/www/html
+    entrypoint: [wp]
+volumes:
+  db_data:
+  wp_data:
