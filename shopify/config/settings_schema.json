@@ -1,0 +1,27 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "TIRIO Aviation",
+    "theme_version": "1.0.0",
+    "theme_author": "TIRIO",
+    "theme_documentation_url": "https://github.com/z915084508/tirio-store",
+    "theme_support_url": "https://github.com/z915084508/tirio-store/issues"
+  },
+  {
+    "name": "Brand and catalog",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "checkbox",
+        "id": "catalog_mode",
+        "label": "Catalog mode (hide purchase controls)",
+        "default": true,
+        "info": "Keep enabled during the market test. This is presentation only; it does not disable Shopify checkout or other sales channels."
+      }
+    ]
+  }
+]

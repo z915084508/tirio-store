@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "info": {
+          "type": "details",
+          "settings": {
+            "heading": "Detalles y materiales",
+            "text": "<p>Consulta las especificaciones del producto. No es un juguete salvo indicación expresa.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "info"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

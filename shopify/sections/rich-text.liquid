@@ -1,0 +1,31 @@
+<section class="container section"><div class="story"><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2><div class="rte lede">{{ section.settings.text }}</div></div></section>
+{% schema %}
+{
+  "name": "rich text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Nuestra historia"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "La aviación se lleva contigo."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>TIRIO nace de la pasión por volar y coleccionar. Este catálogo de prueba presenta conceptos de producto; imágenes y disponibilidad se confirmarán antes del lanzamiento.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand story"
+    }
+  ]
+}
+{% endschema %}

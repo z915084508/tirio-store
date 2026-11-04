@@ -1,0 +1,34 @@
+{
+  "general": {
+    "skip": "Skip to content",
+    "navigation": "Main navigation",
+    "catalog": "Collection",
+    "appearance": "Appearance",
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark",
+    "footer": "Footer links",
+    "illustration": "ILLUSTRATION · NOT A PRODUCT",
+    "aircraft": "Aircraft illustration",
+    "placeholder": "Concept · coming soon",
+    "view_all": "View all",
+    "sort": "Sort by",
+    "apply": "Apply",
+    "empty": "This collection is coming soon.",
+    "pagination": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "not_found": "This page has changed course."
+  },
+  "products": {
+    "sold_out": "Sold out",
+    "catalog_notice": "Test catalog. Purchasing is unavailable in this theme.",
+    "variant": "Variant and price",
+    "quantity": "Quantity",
+    "add": "Add to cart",
+    "cart": "Cart",
+    "empty_cart": "Your cart is empty.",
+    "remove": "Remove",
+    "update": "Update cart"
+  }
+}

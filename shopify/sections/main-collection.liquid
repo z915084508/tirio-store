@@ -1,0 +1,9 @@
+<section class="container section"><p class="eyebrow">TIRIO / {{ 'general.catalog' | t }}</p><h1>{{ collection.title | escape }}</h1><div class="rte lede">{{ collection.description }}</div>
+<form method="get"><label for="Sort-{{ section.id }}">{{ 'general.sort' | t }}</label><select name="sort_by" id="Sort-{{ section.id }}">{% assign sort_by = collection.sort_by | default: collection.default_sort_by %}{% for option in collection.sort_options %}<option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name | escape }}</option>{% endfor %}</select><button type="submit">{{ 'general.apply' | t }}</button></form>
+{% paginate collection.products by 12 %}<div class="grid section">{% for product in collection.products %}{% render 'product-card', card_product: product %}{% else %}<p class="empty">{{ 'general.empty' | t }}</p>{% endfor %}</div>{% render 'pagination', paginate: paginate %}{% endpaginate %}</section>
+{% schema %}
+{
+  "name": "main collection",
+  "settings": []
+}
+{% endschema %}

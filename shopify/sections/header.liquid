@@ -1,0 +1,26 @@
+{% if section.settings.announcement != blank %}<div class="announcement">{{ section.settings.announcement | escape }}</div>{% endif %}
+<header class="container"><div class="header-row">
+<a class="brand" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+{% if settings.logo %}{{ settings.logo | image_url: width: 400 | image_tag: widths: '200,400', alt: shop.name }}{% else %}<img src="{{ 'tirio-logo.png' | asset_url }}" width="1637" height="391" alt="TIRIO 30 — Aviation & Collectibles">{% endif %}</a>
+<nav aria-label="{{ 'general.navigation' | t }}">{% for link in section.settings.menu.links %}<a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>{% else %}<a href="{{ routes.all_products_collection_url }}">{{ 'general.catalog' | t }}</a>{% endfor %}</nav>
+<div class="theme-control"><label for="ThemeMode-{{ section.id }}">{{ 'general.appearance' | t }}</label><select id="ThemeMode-{{ section.id }}" data-theme-select><option value="system">{{ 'general.system' | t }}</option><option value="light">{{ 'general.light' | t }}</option><option value="dark">{{ 'general.dark' | t }}</option></select></div>
+</div></header>
+{% schema %}
+{
+  "name": "header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "announcement",
+      "label": "Announcement",
+      "default": "AVIATION & COLLECTIBLES · TIRIO"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

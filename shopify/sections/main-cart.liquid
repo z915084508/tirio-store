@@ -1,0 +1,7 @@
+<section class="container section"><h1>{{ 'products.cart' | t }}</h1>{% if settings.catalog_mode %}<p class="empty">{{ 'products.catalog_notice' | t }}</p>{% elsif cart.empty? %}<p>{{ 'products.empty_cart' | t }}</p>{% else %}{% form 'cart', cart %}{% for item in cart.items %}<div class="story"><a href="{{ item.url }}">{{ item.product.title | escape }} — {{ item.variant.title | escape }}</a><p>{{ item.final_line_price | money }}</p><label for="CartQuantity-{{ item.index | plus: 1 }}">{{ 'products.quantity' | t }}</label><input id="CartQuantity-{{ item.index | plus: 1 }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0"><a href="{{ item.url_to_remove }}">{{ 'products.remove' | t }}</a></div>{% endfor %}<p>{{ cart.total_price | money }}</p><button type="submit" name="update">{{ 'products.update' | t }}</button>{% endform %}{% endif %}</section>
+{% schema %}
+{
+  "name": "main cart",
+  "settings": []
+}
+{% endschema %}

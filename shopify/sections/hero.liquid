@@ -1,0 +1,47 @@
+<section class="container hero"><div><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h1>{{ section.settings.heading | escape }}</h1><div class="lede rte">{{ section.settings.text }}</div><a class="button" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.label | escape }} →</a></div><div class="hero-art">{% if section.settings.image %}{{ section.settings.image | image_url: width: 1200 | image_tag: widths: '400,800,1200', loading: 'eager' }}{% else %}{% render 'aircraft' %}<small>{{ 'general.illustration' | t }}</small>{% endif %}</div></section>
+{% schema %}
+{
+  "name": "hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "TIRIO — Aviation & Collectibles"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tu próxima colección empieza aquí."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Modelos de aviones, pequeños detalles y grandes historias. Una selección para vivir la aviación cada día.</p>"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Button label",
+      "default": "Explorar la colección"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aviation hero"
+    }
+  ]
+}
+{% endschema %}
