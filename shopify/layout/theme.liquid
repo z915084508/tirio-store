@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" data-theme="system">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ page_title | escape }}{% unless page_title contains shop.name %} — {{ shop.name | escape }}{% endunless %}</title>
+{% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+<link rel="canonical" href="{{ canonical_url }}">
+<script>try{var m=localStorage.getItem('tirio-theme');if(['light','dark','system'].includes(m))document.documentElement.dataset.theme=m}catch(e){}</script>
+<script src="{{ 'theme-mode.js' | asset_url }}" defer></script>
+{{ 'theme.css' | asset_url | stylesheet_tag }}
+{{ content_for_header }}
+</head>
+<body>
+<a class="skip-link" href="#MainContent">{{ 'general.skip' | t }}</a>
+{% sections 'header-group' %}
+<main id="MainContent" tabindex="-1">{{ content_for_layout }}</main>
+{% sections 'footer-group' %}
+</body></html>

@@ -1,0 +1,19 @@
+<footer class="footer"><div class="container footer-row"><div><strong>TIRIO</strong><p class="muted">{{ section.settings.text | escape }}</p><small>© {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</small></div><nav aria-label="{{ 'general.footer' | t }}">{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}</nav></div></footer>
+{% schema %}
+{
+  "name": "footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Description",
+      "default": "Aviation & Collectibles. Para quienes siempre miran al cielo."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Footer menu"
+    }
+  ]
+}
+{% endschema %}

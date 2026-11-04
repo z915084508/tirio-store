@@ -1,0 +1,34 @@
+{
+  "general": {
+    "skip": "Saltar al contenido",
+    "navigation": "Navegación principal",
+    "catalog": "Colección",
+    "appearance": "Apariencia",
+    "system": "Sistema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "footer": "Enlaces del pie",
+    "illustration": "ILUSTRACIÓN · NO ES UN PRODUCTO",
+    "aircraft": "Ilustración de un avión",
+    "placeholder": "Concepto · próximamente",
+    "view_all": "Ver todo",
+    "sort": "Ordenar por",
+    "apply": "Aplicar",
+    "empty": "La colección estará disponible próximamente.",
+    "pagination": "Paginación",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "not_found": "Esta página ha cambiado de rumbo."
+  },
+  "products": {
+    "sold_out": "Agotado",
+    "catalog_notice": "Catálogo de prueba. Compra no disponible en este tema.",
+    "variant": "Variante y precio",
+    "quantity": "Cantidad",
+    "add": "Añadir al carrito",
+    "cart": "Carrito",
+    "empty_cart": "Tu carrito está vacío.",
+    "remove": "Eliminar",
+    "update": "Actualizar carrito"
+  }
+}
