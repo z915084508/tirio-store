@@ -45,5 +45,13 @@
     "dimensions": "Dimensiones",
     "package_contents": "Contenido del paquete",
     "specifications_editor": "Añade los datos confirmados en los ajustes de esta sección. Los campos vacíos no se muestran en la tienda."
+  },
+  "membership": {
+    "heading": "Vincula tu cuenta HISPAFLY",
+    "explanation": "Conecta tu cuenta de cliente TIRIO con tu cuenta de miembro HISPAFLY. La verificación se realiza de forma segura en cada plataforma, sin compartir contraseñas.",
+    "optional": "La vinculación es opcional. No crea pedidos ni activa descuentos automáticamente.",
+    "link": "Vincular cuenta de HISPAFLY",
+    "shopify_login": "Iniciar sesión en TIRIO",
+    "editor": "Vinculación deshabilitada. Configura y verifica la aplicación, el servicio y el adaptador HISPAFLY antes de activar esta sección."
   }
 }

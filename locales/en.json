@@ -45,5 +45,13 @@
     "dimensions": "Dimensions",
     "package_contents": "Package contents",
     "specifications_editor": "Add confirmed information in this section’s settings. Empty fields are hidden on the storefront."
+  },
+  "membership": {
+    "heading": "Link your HISPAFLY account",
+    "explanation": "Connect your TIRIO customer account with your HISPAFLY membership. Each platform verifies your identity securely without sharing passwords.",
+    "optional": "Linking is optional. It does not create orders or automatically activate discounts.",
+    "link": "Link HISPAFLY account",
+    "shopify_login": "Sign in to TIRIO",
+    "editor": "Account linking is disabled. Configure and verify the app, service and HISPAFLY adapter before enabling this section."
   }
 }
