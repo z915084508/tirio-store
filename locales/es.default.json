@@ -19,7 +19,8 @@
     "next": "Siguiente",
     "not_found": "Esta página ha cambiado de rumbo.",
     "select_featured_collection": "Selecciona una colección en los ajustes de esta sección para mostrar tus productos reales.",
-    "featured_collection_empty": "No hay productos disponibles en esta colección."
+    "featured_collection_empty": "No hay productos disponibles en esta colección.",
+    "home": "Inicio"
   },
   "products": {
     "sold_out": "Agotado",
@@ -33,6 +34,16 @@
     "update": "Actualizar carrito",
     "available": "Disponible",
     "from_price": "Desde",
-    "no_image": "Imagen no disponible"
+    "no_image": "Imagen no disponible",
+    "breadcrumb": "Ruta de navegación",
+    "gallery": "Imágenes del producto",
+    "open_image": "Abrir imagen {{ number }} en tamaño completo (nueva pestaña)",
+    "show_image": "Mostrar imagen {{ number }}",
+    "variants": "Variantes y disponibilidad",
+    "specifications": "Ficha del producto",
+    "material": "Material",
+    "dimensions": "Dimensiones",
+    "package_contents": "Contenido del paquete",
+    "specifications_editor": "Añade los datos confirmados en los ajustes de esta sección. Los campos vacíos no se muestran en la tienda."
   }
 }

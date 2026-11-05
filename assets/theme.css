@@ -12,3 +12,20 @@
 .card-no-image{height:100%;display:grid;place-items:center;text-align:center;padding:20px;font-size:14px}
 .featured-collection .section-heading{flex-wrap:wrap}.featured-collection .section-heading h2{overflow-wrap:anywhere}
 @media(max-width:379px){.product-grid{grid-template-columns:1fr}}
+
+/* Product detail: use existing appearance tokens, with no store-specific data. */
+.product-breadcrumb{display:flex;flex-wrap:wrap;gap:10px;padding-top:28px;font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.product{align-items:start}.product>*,.product-information{min-width:0}
+tirio-product-gallery{display:grid;gap:16px}.product-image{margin:0;background:var(--soft);aspect-ratio:1;overflow:hidden}
+.product-image>a{display:block;height:100%}.product-image img{width:100%;height:100%;object-fit:contain}
+.product-image[hidden],.product-thumbnails[hidden]{display:none}
+.product-thumbnails{display:flex;flex-wrap:wrap;gap:10px}.product-thumbnail{padding:4px;width:72px;height:72px;border:2px solid var(--line);background:var(--surface);cursor:pointer}
+.product-thumbnail img{width:100%;height:100%;object-fit:contain}.product-thumbnail[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 -4px var(--accent)}
+.product-information h1{overflow-wrap:anywhere;margin-top:12px}.product-information .price{margin-bottom:6px}.product-status{font-size:14px;margin-top:0;color:var(--muted)}
+.product-description{margin-block:24px}.catalog-notice{background:var(--soft);border-left:3px solid var(--accent);padding:16px 18px;font-size:14px}
+.product-specifications{margin-block:28px}.product-specifications h2{font-size:22px}.product-specifications dl{margin:0}.product-specifications dl>div{display:grid;grid-template-columns:minmax(100px,1fr) minmax(0,2fr);gap:16px;padding-block:12px;border-bottom:1px solid var(--line)}
+.product-specifications dt{color:var(--muted)}.product-specifications dd{margin:0;overflow-wrap:anywhere}
+.product-details{border-top:1px solid var(--line);padding-block:16px}.product-details summary{cursor:pointer;font-weight:700;overflow-wrap:anywhere}.product-details .rte{padding-top:12px}
+.product-variants{list-style:none;padding:0}.product-variants li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-block:10px;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.product-editor-note{font-size:13px;border:1px dashed var(--line);padding:12px}
+@media(max-width:600px){.product{gap:24px}.product-information h1{font-size:34px}.product-breadcrumb{padding-top:18px}.product-specifications dl>div{grid-template-columns:1fr;gap:4px}}

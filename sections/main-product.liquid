@@ -1,34 +1,111 @@
 {% assign selected_variant = product.selected_or_first_available_variant %}
-<section class="container product"><div class="gallery">{% for image in product.images %}{{ image | image_url: width: 1400 | image_tag: widths: '400,800,1400', loading: 'lazy' }}{% else %}<div class="card-media">{{ 'product-1' | placeholder_svg_tag }}</div>{% endfor %}</div><div><p class="eyebrow">{{ product.vendor | escape }}</p><h1>{{ product.title | escape }}</h1><p class="price">{% if product.price_varies %}{{ product.price_min | money }} – {{ product.price_max | money }}{% else %}{{ product.price | money }}{% endif %}</p><div class="rte">{{ product.description }}</div>
-{% if settings.catalog_mode %}<p class="empty">{{ 'products.catalog_notice' | t }}</p>{% else %}
-{% form 'product', product, class: 'product-form' %}{{ form.errors | default_errors }}<label for="Variant-{{ section.id }}">{{ 'products.variant' | t }}</label><select id="Variant-{{ section.id }}" name="id">{% for variant in product.variants %}<option value="{{ variant.id }}"{% if variant.id == selected_variant.id %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title | escape }} — {{ variant.price | money }}{% unless variant.available %} · {{ 'products.sold_out' | t }}{% endunless %}</option>{% endfor %}</select><label for="Quantity-{{ section.id }}">{{ 'products.quantity' | t }}</label><input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1"><button class="button" type="submit"{% unless product.available %} disabled{% endunless %}>{% if product.available %}{{ 'products.add' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</button>{% endform %}{% endif %}
-{% for block in section.blocks %}{% case block.type %}{% when '@app' %}{% render block %}{% when 'details' %}<details {{ block.shopify_attributes }}><summary>{{ block.settings.heading | escape }}</summary><div class="rte">{{ block.settings.text }}</div></details>{% endcase %}{% endfor %}</div></section>
+<nav class="container product-breadcrumb" aria-label="{{ 'products.breadcrumb' | t }}">
+  <a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a><span aria-hidden="true">/</span>
+  <a href="{{ routes.all_products_collection_url }}">{{ 'general.catalog' | t }}</a><span aria-hidden="true">/</span>
+  <span aria-current="page">{{ product.title | escape }}</span>
+</nav>
+<section class="container product" aria-labelledby="ProductTitle-{{ section.id }}">
+  <tirio-product-gallery class="gallery" role="region" aria-label="{{ 'products.gallery' | t }}">
+    {% for image in product.images %}
+      {% assign image_alt = image.alt | default: product.title %}
+      {% assign image_loading = 'lazy' %}
+      {% if forloop.first %}{% assign image_loading = 'eager' %}{% endif %}
+      <figure class="product-image" id="ProductImage-{{ section.id }}-{{ forloop.index }}" data-product-image>
+        <a href="{{ image | image_url: width: 2400 }}" target="_blank" rel="noopener" aria-label="{{ 'products.open_image' | t: number: forloop.index | escape }}">
+          {{ image | image_url: width: 1400 | image_tag: widths: '400,800,1100,1400', sizes: '(max-width: 600px) calc(100vw - 40px), (max-width: 900px) 52vw, 640px', loading: image_loading, alt: image_alt }}
+        </a>
+      </figure>
+    {% else %}
+      <div class="card-media"><span class="card-no-image muted">{{ 'products.no_image' | t }}</span></div>
+    {% endfor %}
+    {% if product.images.size > 1 %}
+      <div class="product-thumbnails" data-gallery-controls hidden>
+        {% for image in product.images %}
+          <button type="button" class="product-thumbnail" data-gallery-index="{{ forloop.index0 }}" aria-controls="ProductImage-{{ section.id }}-{{ forloop.index }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="{{ 'products.show_image' | t: number: forloop.index | escape }}">
+            {{ image | image_url: width: 180 | image_tag: loading: 'lazy', widths: '90,180', sizes: '72px', alt: '' }}
+          </button>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </tirio-product-gallery>
+  <div class="product-information">
+    {% if product.vendor != blank %}<p class="eyebrow">{{ product.vendor | escape }}</p>{% endif %}
+    <h1 id="ProductTitle-{{ section.id }}">{{ product.title | escape }}</h1>
+    <p class="price">{% if product.price_varies %}{{ 'products.from_price' | t }} {{ product.price_min | money }}{% else %}{{ product.price | money }}{% endif %}</p>
+    <p class="product-status">{% if product.available %}{{ 'products.available' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</p>
+    {% if product.description != blank %}<div class="rte product-description">{{ product.description }}</div>{% endif %}
+    {% if settings.catalog_mode %}
+      <p class="catalog-notice">{{ 'products.catalog_notice' | t }}</p>
+      {% unless product.has_only_default_variant %}
+        <details class="product-details">
+          <summary>{{ 'products.variants' | t }}</summary>
+          <ul class="product-variants" role="list">
+            {% for variant in product.variants %}
+              <li><span>{{ variant.title | escape }}</span><span>{{ variant.price | money }} · {% if variant.available %}{{ 'products.available' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</span></li>
+            {% endfor %}
+          </ul>
+        </details>
+      {% endunless %}
+    {% else %}
+      {% form 'product', product, class: 'product-form' %}
+        {{ form.errors | default_errors }}
+        <label for="Variant-{{ section.id }}">{{ 'products.variant' | t }}</label>
+        <select id="Variant-{{ section.id }}" name="id">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}"{% if variant.id == selected_variant.id %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title | escape }} — {{ variant.price | money }}{% unless variant.available %} · {{ 'products.sold_out' | t }}{% endunless %}</option>
+          {% endfor %}
+        </select>
+        <label for="Quantity-{{ section.id }}">{{ 'products.quantity' | t }}</label>
+        <input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1">
+        <button class="button" type="submit"{% unless product.available %} disabled{% endunless %}>{% if product.available %}{{ 'products.add' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</button>
+      {% endform %}
+    {% endif %}
+    {% if section.settings.material != blank or section.settings.dimensions != blank or section.settings.package_contents != blank %}
+      <div class="product-specifications">
+        <h2>{{ 'products.specifications' | t }}</h2>
+        <dl>
+          {% if section.settings.material != blank %}<div><dt>{{ 'products.material' | t }}</dt><dd>{{ section.settings.material | escape }}</dd></div>{% endif %}
+          {% if section.settings.dimensions != blank %}<div><dt>{{ 'products.dimensions' | t }}</dt><dd>{{ section.settings.dimensions | escape }}</dd></div>{% endif %}
+          {% if section.settings.package_contents != blank %}<div><dt>{{ 'products.package_contents' | t }}</dt><dd>{{ section.settings.package_contents | escape }}</dd></div>{% endif %}
+        </dl>
+      </div>
+    {% elsif request.design_mode %}
+      <p class="product-editor-note muted">{{ 'products.specifications_editor' | t }}</p>
+    {% endif %}
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when '@app' %}{% render block %}
+        {% when 'details' %}
+          {% if block.settings.text != blank %}
+            <details class="product-details" {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.heading | default: 'Información del producto' | escape }}</summary>
+              <div class="rte">{{ block.settings.text }}</div>
+            </details>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
+<script src="{{ 'product-gallery.js' | asset_url }}" defer></script>
 {% schema %}
 {
-  "name": "main product",
-  "settings": [],
+  "name": "Producto",
+  "settings": [
+    { "type": "paragraph", "content": "Añade solo datos confirmados. Los campos vacíos se ocultan. Estos ajustes se comparten entre los productos que usan esta plantilla; conecta una fuente dinámica (metacampo) para datos por producto." },
+    { "type": "text", "id": "material", "label": "Material" },
+    { "type": "text", "id": "dimensions", "label": "Dimensiones" },
+    { "type": "text", "id": "package_contents", "label": "Contenido del paquete" }
+  ],
   "blocks": [
     {
       "type": "details",
-      "name": "Product information",
+      "name": "Información desplegable",
       "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "Heading",
-          "default": "Información del producto"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text",
-          "default": "<p>Confirma escala, materiales y dimensiones antes del lanzamiento.</p>"
-        }
+        { "type": "text", "id": "heading", "label": "Título", "default": "Información del producto" },
+        { "type": "richtext", "id": "text", "label": "Contenido" }
       ]
     },
-    {
-      "type": "@app"
-    }
+    { "type": "@app" }
   ]
 }
 {% endschema %}
