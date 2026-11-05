@@ -1,0 +1,25 @@
+{% assign service_scheme = section.settings.service_url | slice: 0, 8 %}
+{% if section.settings.enabled and service_scheme == 'https://' %}
+  <section class="container section" aria-labelledby="HispaflyHeading-{{ section.id }}">
+    <p class="eyebrow">TIRIO / HISPAFLY</p>
+    <h1 id="HispaflyHeading-{{ section.id }}">{{ 'membership.heading' | t }}</h1>
+    <div class="lede"><p>{{ 'membership.explanation' | t }}</p></div>
+    <p>{{ 'membership.optional' | t }}</p>
+    <a class="button" href="{{ section.settings.service_url }}">{{ 'membership.link' | t }}</a>
+    <p><a href="{{ routes.account_login_url }}">{{ 'membership.shopify_login' | t }}</a></p>
+    {% if shop.privacy_policy != blank %}<p><a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title | escape }}</a></p>{% endif %}
+  </section>
+{% elsif request.design_mode %}
+  <section class="container section"><p class="empty">{{ 'membership.editor' | t }}</p></section>
+{% endif %}
+{% schema %}
+{
+  "name": "Miembros HISPAFLY",
+  "settings": [
+    { "type": "paragraph", "content": "Este bloque requiere la aplicación proxy Shopify, el servicio de vinculación y el adaptador HISPAFLY. No habilitar hasta verificar el flujo completo. No inicia sesión mediante HISPAFLY en Shopify." },
+    { "type": "checkbox", "id": "enabled", "label": "Habilitar vinculación", "default": false },
+    { "type": "url", "id": "service_url", "label": "URL HTTPS del servicio de vinculación" }
+  ],
+  "presets": [{ "name": "Miembros HISPAFLY" }]
+}
+{% endschema %}

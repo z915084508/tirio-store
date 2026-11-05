@@ -1,0 +1,4 @@
+{
+  "sections": { "membership": { "type": "hispafly-membership", "settings": { "enabled": false } } },
+  "order": ["membership"]
+}
