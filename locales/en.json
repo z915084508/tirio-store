@@ -19,7 +19,8 @@
     "next": "Next",
     "not_found": "This page has changed course.",
     "select_featured_collection": "Select a collection in this section’s settings to display your real products.",
-    "featured_collection_empty": "There are no products available in this collection."
+    "featured_collection_empty": "There are no products available in this collection.",
+    "home": "Home"
   },
   "products": {
     "sold_out": "Sold out",
@@ -33,6 +34,16 @@
     "update": "Update cart",
     "available": "Available",
     "from_price": "From",
-    "no_image": "Image unavailable"
+    "no_image": "Image unavailable",
+    "breadcrumb": "Breadcrumb",
+    "gallery": "Product images",
+    "open_image": "Open image {{ number }} at full size (new tab)",
+    "show_image": "Show image {{ number }}",
+    "variants": "Variants and availability",
+    "specifications": "Product specifications",
+    "material": "Material",
+    "dimensions": "Dimensions",
+    "package_contents": "Package contents",
+    "specifications_editor": "Add confirmed information in this section’s settings. Empty fields are hidden on the storefront."
   }
 }
