@@ -10,7 +10,6 @@
     "footer": "Footer links",
     "illustration": "ILLUSTRATION · NOT A PRODUCT",
     "aircraft": "Aircraft illustration",
-    "placeholder": "Concept · coming soon",
     "view_all": "View all",
     "sort": "Sort by",
     "apply": "Apply",
@@ -18,7 +17,9 @@
     "pagination": "Pagination",
     "previous": "Previous",
     "next": "Next",
-    "not_found": "This page has changed course."
+    "not_found": "This page has changed course.",
+    "select_featured_collection": "Select a collection in this section’s settings to display your real products.",
+    "featured_collection_empty": "There are no products available in this collection."
   },
   "products": {
     "sold_out": "Sold out",
@@ -29,6 +30,9 @@
     "cart": "Cart",
     "empty_cart": "Your cart is empty.",
     "remove": "Remove",
-    "update": "Update cart"
+    "update": "Update cart",
+    "available": "Available",
+    "from_price": "From",
+    "no_image": "Image unavailable"
   }
 }

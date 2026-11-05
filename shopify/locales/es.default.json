@@ -10,7 +10,6 @@
     "footer": "Enlaces del pie",
     "illustration": "ILUSTRACIÓN · NO ES UN PRODUCTO",
     "aircraft": "Ilustración de un avión",
-    "placeholder": "Concepto · próximamente",
     "view_all": "Ver todo",
     "sort": "Ordenar por",
     "apply": "Aplicar",
@@ -18,7 +17,9 @@
     "pagination": "Paginación",
     "previous": "Anterior",
     "next": "Siguiente",
-    "not_found": "Esta página ha cambiado de rumbo."
+    "not_found": "Esta página ha cambiado de rumbo.",
+    "select_featured_collection": "Selecciona una colección en los ajustes de esta sección para mostrar tus productos reales.",
+    "featured_collection_empty": "No hay productos disponibles en esta colección."
   },
   "products": {
     "sold_out": "Agotado",
@@ -29,6 +30,9 @@
     "cart": "Carrito",
     "empty_cart": "Tu carrito está vacío.",
     "remove": "Eliminar",
-    "update": "Actualizar carrito"
+    "update": "Actualizar carrito",
+    "available": "Disponible",
+    "from_price": "Desde",
+    "no_image": "Imagen no disponible"
   }
 }

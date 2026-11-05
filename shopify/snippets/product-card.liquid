@@ -1,1 +1,19 @@
-{% if card_product != blank %}<a class="card" href="{{ card_product.url }}"><div class="card-media">{% if card_product.featured_image %}{{ card_product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '240,400,700' }}{% else %}{{ 'product-1' | placeholder_svg_tag }}{% endif %}</div><h3>{{ card_product.title | escape }}</h3><span class="muted">{{ card_product.price | money }}{% unless card_product.available %} · {{ 'products.sold_out' | t }}{% endunless %}</span></a>{% else %}<div class="card"><div class="card-media">{{ 'product-1' | placeholder_svg_tag }}</div><h3>{{ placeholder_title | default: 'Aviation collectible' | escape }}</h3><span class="tag muted">{{ 'general.placeholder' | t }}</span></div>{% endif %}
+{% if card_product != blank %}
+  <a class="card" href="{{ card_product.url }}">
+    <div class="card-media">
+      {% if card_product.featured_image %}
+        {% assign image_alt = card_product.featured_image.alt | default: card_product.title %}
+        {{ card_product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '240,400,600,900', sizes: '(max-width: 379px) calc(100vw - 40px), (max-width: 600px) calc((100vw - 56px) / 2), (max-width: 900px) calc((100vw - 88px) / 2), (max-width: 1280px) calc((100vw - 136px) / 4), 286px', alt: image_alt }}
+      {% else %}
+        <span class="card-no-image muted">{{ 'products.no_image' | t }}</span>
+      {% endif %}
+    </div>
+    <h3>{{ card_product.title | escape }}</h3>
+    <span class="card-price muted">
+      {% if card_product.price_varies %}{{ 'products.from_price' | t }} {% endif %}{{ card_product.price | money }}
+    </span>
+    <span class="card-availability muted">
+      {% if card_product.available %}{{ 'products.available' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}
+    </span>
+  </a>
+{% endif %}
