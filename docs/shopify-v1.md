@@ -16,7 +16,7 @@ The official 1637 × 391 PNG logo was extracted byte-for-byte from the existing 
 - Spanish default and English UI translations. Merchant-authored copy remains editable; translate it separately through Shopify localization tools.
 - Appearance uses a labelled native select (System / Light / Dark), keyboard operation, local storage, cross-tab synchronization and editor section reload support. System follows the OS through CSS, including live OS changes. Storage failure safely falls back to System; JavaScript-free rendering also follows the OS. Early local initialization minimizes color flashing.
 
-Placeholder cards are non-purchasable concepts, not real product records, prices or inventory. Assign a real collection to replace them. No shipping, authenticity, licensing or stock claims are fabricated.
+Homepage product cards use only the selected Shopify collection. Unconfigured sections show guidance only in Theme Editor and are hidden on the storefront; empty collections show an honest empty state. See `docs/task-003.md` for the updated configuration and validation.
 
 ## Local validation (no store connection)
 
