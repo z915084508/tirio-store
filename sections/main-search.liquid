@@ -1,0 +1,29 @@
+<section class="container section">
+  <h1>{{ 'general.search_results' | t }}</h1>
+  <form action="{{ routes.search_url }}" method="get" role="search">
+    <label for="Search-{{ section.id }}">{{ 'general.search' | t }}</label>
+    <input id="Search-{{ section.id }}" type="search" name="q" value="{{ search.terms | escape }}">
+    <button type="submit">{{ 'general.search' | t }}</button>
+  </form>
+  {% if search.performed %}
+    {% paginate search.results by 12 %}
+      <ul class="grid product-grid section" role="list">
+        {% for result in search.results %}
+          <li>
+            {% if result.object_type == 'product' %}
+              {% render 'product-card', card_product: result %}
+            {% else %}
+              <a class="card" href="{{ result.url }}"><h3>{{ result.title | escape }}</h3></a>
+            {% endif %}
+          </li>
+        {% else %}
+          <li class="empty">{{ 'general.no_results' | t }}</li>
+        {% endfor %}
+      </ul>
+      {% render 'pagination', paginate: paginate %}
+    {% endpaginate %}
+  {% endif %}
+</section>
+{% schema %}
+{"name":"Búsqueda","settings":[]}
+{% endschema %}

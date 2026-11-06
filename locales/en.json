@@ -20,7 +20,10 @@
     "not_found": "This page has changed course.",
     "select_featured_collection": "Select a collection in this section’s settings to display your real products.",
     "featured_collection_empty": "There are no products available in this collection.",
-    "home": "Home"
+    "home": "Home",
+    "search": "Buscar",
+    "search_results": "Resultados de búsqueda",
+    "no_results": "No se encontraron resultados."
   },
   "products": {
     "sold_out": "Sold out",
@@ -44,6 +47,9 @@
     "material": "Material",
     "dimensions": "Dimensions",
     "package_contents": "Package contents",
-    "specifications_editor": "Add confirmed information in this section’s settings. Empty fields are hidden on the storefront."
+    "specifications_editor": "Add confirmed information in this section’s settings. Empty fields are hidden on the storefront.",
+    "coming_soon": "PRÓXIMAMENTE",
+    "coming_soon_message": "Producto en desarrollo. Próximamente disponible en TIRIO Aviation & Collectibles.",
+    "design_disclaimer": "Las imágenes son representaciones del diseño y el producto final puede variar."
   }
 }

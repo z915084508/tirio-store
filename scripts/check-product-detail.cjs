@@ -7,7 +7,7 @@ const { Liquid } = require('liquidjs');
 const { JSDOM } = require('jsdom');
 const root = path.join(__dirname, '..');
 const es = JSON.parse(fs.readFileSync(path.join(root, 'locales/es.default.json')));
-const engine = new Liquid();
+const engine = new Liquid({ root: path.join(root, 'snippets'), extname: '.liquid' });
 engine.registerFilter('t', (key, ...args) => {
   let value = key.split('.').reduce((obj, part) => obj[part], es);
   for (const [name, replacement] of args) value = value.replace(`{{ ${name} }}`, replacement);

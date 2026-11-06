@@ -1,3 +1,5 @@
+{% assign coming_soon = false %}
+{% if product.tags contains 'tirio-coming-soon' %}{% assign coming_soon = true %}{% endif %}
 {% assign selected_variant = product.selected_or_first_available_variant %}
 <nav class="container product-breadcrumb" aria-label="{{ 'products.breadcrumb' | t }}">
   <a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a><span aria-hidden="true">/</span>
@@ -30,11 +32,14 @@
   </tirio-product-gallery>
   <div class="product-information">
     {% if product.vendor != blank %}<p class="eyebrow">{{ product.vendor | escape }}</p>{% endif %}
+    {% if coming_soon %}{% render 'coming-soon-badge' %}{% endif %}
     <h1 id="ProductTitle-{{ section.id }}">{{ product.title | escape }}</h1>
     <p class="price">{% if product.price_varies %}{{ 'products.from_price' | t }} {{ product.price_min | money }}{% else %}{{ product.price | money }}{% endif %}</p>
-    <p class="product-status">{% if product.available %}{{ 'products.available' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</p>
+    {% unless coming_soon %}<p class="product-status">{% if product.available %}{{ 'products.available' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</p>{% endunless %}
     {% if product.description != blank %}<div class="rte product-description">{{ product.description }}</div>{% endif %}
-    {% if settings.catalog_mode %}
+    {% if coming_soon %}
+      {% render 'coming-soon-notice' %}
+    {% elsif settings.catalog_mode %}
       <p class="catalog-notice">{{ 'products.catalog_notice' | t }}</p>
       {% unless product.has_only_default_variant %}
         <details class="product-details">

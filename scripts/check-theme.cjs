@@ -3,7 +3,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const root = path.join(__dirname, '..');
-const files = fs.readdirSync(root, { recursive: true }).filter(p => fs.statSync(path.join(root, p)).isFile());
+const files = ['assets','config','layout','locales','sections','snippets','templates'].flatMap(dir => fs.readdirSync(path.join(root, dir), { recursive: true }).map(p => path.join(dir,p))).filter(p => fs.statSync(path.join(root, p)).isFile());
 for (const file of files) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
   if (file.endsWith('.json')) JSON.parse(source);

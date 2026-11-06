@@ -29,3 +29,7 @@ tirio-product-gallery{display:grid;gap:16px}.product-image{margin:0;background:v
 .product-variants{list-style:none;padding:0}.product-variants li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-block:10px;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
 .product-editor-note{font-size:13px;border:1px dashed var(--line);padding:12px}
 @media(max-width:600px){.product{gap:24px}.product-information h1{font-size:34px}.product-breadcrumb{padding-top:18px}.product-specifications dl>div{grid-template-columns:1fr;gap:4px}}
+.coming-soon-badge{display:inline-block;max-width:100%;padding:6px 10px;background:#f6c544;color:#171a1d;font-size:12px;font-weight:700;line-height:1.5;letter-spacing:.08em;overflow-wrap:anywhere}
+.card .coming-soon-badge{margin-top:14px}
+.coming-soon-notice{margin-block:24px;padding:16px;border-inline-start:4px solid #f6c544;background:var(--soft);overflow-wrap:anywhere}
+.coming-soon-notice p{margin:0}.coming-soon-notice p+p{margin-top:12px}

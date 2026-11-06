@@ -1,0 +1,9 @@
+{% comment %}
+  Presentation only. Gate purchase controls on the parent product tag, not variant
+  availability. A real notification integration may be added here later; do not
+  output a signup control until a working service is configured.
+{% endcomment %}
+<div class="coming-soon-notice" data-coming-soon-notice>
+  <p>{{ 'products.coming_soon_message' | t }}</p>
+  <p class="muted">{{ 'products.design_disclaimer' | t }}</p>
+</div>
