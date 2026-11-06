@@ -1,2 +1,6 @@
 # Development documentation and tests live outside this upload root.
 *.zip
+.validation/**
+scripts/**
+docs/**
+README.md

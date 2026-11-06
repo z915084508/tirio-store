@@ -8,12 +8,13 @@
         <span class="card-no-image muted">{{ 'products.no_image' | t }}</span>
       {% endif %}
     </div>
+    {% if card_product.tags contains 'tirio-coming-soon' %}{% render 'coming-soon-badge' %}{% endif %}
     <h3>{{ card_product.title | escape }}</h3>
     <span class="card-price muted">
       {% if card_product.price_varies %}{{ 'products.from_price' | t }} {% endif %}{{ card_product.price | money }}
     </span>
-    <span class="card-availability muted">
+    {% unless card_product.tags contains 'tirio-coming-soon' %}<span class="card-availability muted">
       {% if card_product.available %}{{ 'products.available' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}
-    </span>
+    </span>{% endunless %}
   </a>
 {% endif %}
